@@ -27,3 +27,9 @@ iterator items*[T](L: LinkedList[T]): T =
     while it != nil:
       yield it.data
       it = it.next
+
+iterator pairs*[T](L: LinkedList[T]): tuple[a: int, b: T] =
+  var i: int
+  for item in L:
+    yield (i, item)
+    inc(i)
