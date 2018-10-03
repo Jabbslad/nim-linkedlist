@@ -1,26 +1,25 @@
 type
-  LinkedList[T] = object
+  LinkedList*[T] = object
     head*: ref Node[T]
 
-  Node[T] = object
-    data: T
-    next: ref Node[T]
+  Node*[T] = object
+    data*: T
+    next*: ref Node[T]
 
 proc newLinkedList*[T](): LinkedList[T] =
-  new(result)
+  discard
 
-proc add*[T](L: var LinkedList[T], node: Node[T]) = 
-  if L == nil:
-    return
-  var it = L.head
-  while it.next != nil:
-    it = it.next
-  it.next = node
+proc prepend*[T](L: var LinkedList[T], node: ref Node[T]) = 
+  if L.head == nil:
+    L.head = node
+  else:
+    node.next = L.head
+    L.head = node
 
-proc add*[T](L: LinkedList[T], data: T) = 
+proc prepend*[T](L: var LinkedList[T], data: T) = 
   var node = new(Node[T])
   node.data = data
-  add(L, node)
+  prepend(L, node)
 
 iterator items*[T](L: LinkedList[T]): T =
   if L.head != nil:
