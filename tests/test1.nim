@@ -4,16 +4,16 @@ import linkedlist
 import sequtils
 
 test "creates correct type":
-  let ll = newLinkedList[string]()
-  check (ll is LinkedList[string])
+  let ll = newSinglyLinkedList[string]()
+  check (ll is SinglyLinkedList[string])
 
 test "empty list":
-  let ll = newLinkedList[int]()
+  let ll = newSinglyLinkedList[int]()
   check ll.head == nil
   check ll.tail == nil
 
 test "can prepend items":
-  var ll = newLinkedList[string]()
+  var ll = newSinglyLinkedList[string]()
   prepend(ll, "hello")
   check ll.head.data == "hello"
   check ll.tail.data == "hello"
@@ -22,7 +22,7 @@ test "can prepend items":
   check ll.tail.data == "hello"
 
 test "can append items":
-  var ll = newLinkedList[string]()
+  var ll = newSinglyLinkedList[string]()
   append(ll, "hello")
   check ll.head.data == "hello"
   check ll.tail.data == "hello"
@@ -31,14 +31,14 @@ test "can append items":
   check ll.tail.data == "world"
 
 test "items in correct order":
-  var ll = newLinkedList[string]()
+  var ll = newSinglyLinkedList[string]()
   prepend(ll, "hello")
   prepend(ll, "world")
   prepend(ll, "goodbye")
   check @["goodbye", "world", "hello"] == toSeq(items(ll))
 
 test "pairs in correct order":
-  var ll = newLinkedList[string]()
+  var ll = newSinglyLinkedList[string]()
   prepend(ll, "hello")
   prepend(ll, "world")
   prepend(ll, "goodbye")

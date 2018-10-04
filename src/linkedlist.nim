@@ -1,5 +1,5 @@
 type
-  LinkedList*[T] = object
+  SinglyLinkedList*[T] = object
     head*: ref Node[T]
     tail*: ref Node[T]
 
@@ -11,10 +11,10 @@ proc newNode[T](data: T): ref Node[T] =
   new(result)
   result.data = data
 
-proc newLinkedList*[T](): LinkedList[T] =
+proc newSinglyLinkedList*[T](): SinglyLinkedList[T] =
   discard
 
-proc prepend*[T](L: var LinkedList[T], node: ref Node[T]) = 
+proc prepend*[T](L: var SinglyLinkedList[T], node: ref Node[T]) = 
   if L.head == nil:
     L.head = node
     L.tail = node
@@ -22,10 +22,10 @@ proc prepend*[T](L: var LinkedList[T], node: ref Node[T]) =
     node.next = L.head
     L.head = node
 
-proc prepend*[T](L: var LinkedList[T], data: T) = 
+proc prepend*[T](L: var SinglyLinkedList[T], data: T) = 
   prepend(L, newNode(data))
 
-proc append*[T](L: var LinkedList[T], node: ref Node[T]) =
+proc append*[T](L: var SinglyLinkedList[T], node: ref Node[T]) =
   if L.tail == nil:
     L.tail = node
     L.head = node
@@ -33,17 +33,17 @@ proc append*[T](L: var LinkedList[T], node: ref Node[T]) =
     node.next = L.tail
     L.tail = node
 
-proc append*[T](L: var LinkedList[T], data: T) = 
+proc append*[T](L: var SinglyLinkedList[T], data: T) = 
   append(L, newNode(data))
 
-iterator items*[T](L: LinkedList[T]): T =
+iterator items*[T](L: SinglyLinkedList[T]): T =
   if L.head != nil:
     var it = L.head
     while it != nil:
       yield it.data
       it = it.next
 
-iterator pairs*[T](L: LinkedList[T]): tuple[a: int, b: T] =
+iterator pairs*[T](L: SinglyLinkedList[T]): tuple[a: int, b: T] =
   var i: int
   for item in L:
     yield (i, item)
