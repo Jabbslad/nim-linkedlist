@@ -1,20 +1,22 @@
 type
   SinglyLinkedList*[T] = object
-    head*: ref Node[T]
-    tail*: ref Node[T]
+    head*: SinglyLinkedlistNode[T]
+    tail*: SinglyLinkedlistNode[T]
+
+  SinglyLinkedlistNode[T] = ref Node[T]
 
   Node*[T] = object
     data*: T
-    next*: ref Node[T]
+    next*: SinglyLinkedlistNode[T]
 
-proc newNode[T](data: T): ref Node[T] = 
+proc newNode[T](data: T): SinglyLinkedlistNode[T] = 
   new(result)
   result.data = data
 
 proc newSinglyLinkedList*[T](): SinglyLinkedList[T] =
   discard
 
-proc prepend*[T](L: var SinglyLinkedList[T], node: ref Node[T]) = 
+proc prepend*[T](L: var SinglyLinkedList[T], node: SinglyLinkedlistNode[T]) = 
   if L.head == nil:
     L.head = node
     L.tail = node
@@ -25,7 +27,7 @@ proc prepend*[T](L: var SinglyLinkedList[T], node: ref Node[T]) =
 proc prepend*[T](L: var SinglyLinkedList[T], data: T) = 
   prepend(L, newNode(data))
 
-proc append*[T](L: var SinglyLinkedList[T], node: ref Node[T]) =
+proc append*[T](L: var SinglyLinkedList[T], node: SinglyLinkedlistNode[T]) =
   if L.tail == nil:
     L.tail = node
     L.head = node
