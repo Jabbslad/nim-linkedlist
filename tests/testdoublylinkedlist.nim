@@ -10,3 +10,8 @@ test "empty list":
   let ll = newDoublyLinkedList[int]()
   check ll.head == nil
   check ll.tail == nil
+
+test "can prepend items":
+  var ll = newDoublyLinkedList[string]()
+  prepend(ll, "hello")
+  check ll.head.data == "hello"

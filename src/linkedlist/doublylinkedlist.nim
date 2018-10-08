@@ -1,11 +1,25 @@
 type
-  DoublyLinkedListNodeRef[T] = ref DoublyLinkedListNodeObj[T]
+  DoublyLinkedListNode*[T] = ref DoublyLinkedListNodeObj[T]
 
-  DoublyLinkedListNodeObj[T] = object
-    prev*, next*: DoublyLinkedListNodeRef[T]
+  DoublyLinkedListNodeObj*[T] = object
+    prev*, next*: DoublyLinkedListNode[T]
+    data*: T
 
   DoublyLinkedList*[T] = object
-    head*, tail*: DoublyLinkedListNodeRef[T]
+    head*, tail*: DoublyLinkedListNode[T]
 
 proc newDoublyLinkedList*[T](): DoublyLinkedList[T] =
   discard
+
+proc newDoublyLinkedNode*[T](value: T): DoublyLinkedListNode[T] =
+  new(result)
+  result.data = value
+
+proc prepend*[T](L: var DoublyLinkedList[T], n: DoublyLinkedListNode[T]) = 
+  n.next = L.head
+  L.head = n
+  if L.tail == nil:
+    L.tail = L.head
+
+proc prepend*[T](L: var DoublyLinkedList[T], value: T) =
+  prepend(L, newDoublyLinkedNode(value))
