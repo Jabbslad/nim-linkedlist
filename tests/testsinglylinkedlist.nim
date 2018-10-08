@@ -1,6 +1,6 @@
 import unittest
 
-import linkedlist
+import linkedlist/singlylinkedlist
 import sequtils
 
 test "creates correct type":
