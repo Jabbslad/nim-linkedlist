@@ -4,10 +4,8 @@ type
   DoublyLinkedListNodeObj[T] = object
     prev*, next*: DoublyLinkedListNodeRef[T]
 
-  DoublyLinkedListRef*[T] = ref DoublyLinkedListObj[T]
-
-  DoublyLinkedListObj*[T] = object
+  DoublyLinkedList*[T] = object
     head*, tail*: DoublyLinkedListNodeRef[T]
 
-proc newDoublyLinkedList*[T](): DoublyLinkedListRef[T] =
+proc newDoublyLinkedList*[T](): DoublyLinkedList[T] =
   discard
