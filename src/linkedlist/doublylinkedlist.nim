@@ -29,3 +29,9 @@ iterator items*[T](L: var DoublyLinkedList[T]): T =
   while n != nil:
     yield n.data
     n = n.next
+
+iterator pairs*[T](L: var DoublyLinkedList[T]): tuple[a: int, b: T] =
+  var i: int
+  for item in L:
+    yield(i, item)
+    inc(i)

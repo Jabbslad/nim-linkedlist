@@ -26,3 +26,10 @@ test "items in correct order":
   prepend(ll, "world")
   prepend(ll, "goodbye")
   check @["goodbye", "world", "hello"] == toSeq(items(ll))
+
+test "pairs in correct order":
+  var ll = DoublyLinkedList[string]()
+  prepend(ll, "hello")
+  prepend(ll, "world")
+  prepend(ll, "goodbye")
+  check @[(a: 0, b: "goodbye"), (a: 1, b: "world"), (a: 2, b: "hello")] == toSeq(pairs(ll))
