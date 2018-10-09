@@ -23,3 +23,9 @@ proc prepend*[T](L: var DoublyLinkedList[T], n: DoublyLinkedListNode[T]) =
 
 proc prepend*[T](L: var DoublyLinkedList[T], value: T) =
   prepend(L, newDoublyLinkedNode(value))
+
+iterator items*[T](L: var DoublyLinkedList[T]): T =
+  var n = L.head
+  while n != nil:
+    yield n.data
+    n = n.next

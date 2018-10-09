@@ -1,4 +1,4 @@
-import unittest
+import unittest, sequtils
 
 import linkedlist/doublylinkedlist
 
@@ -19,3 +19,10 @@ test "can prepend items":
   prepend(ll, "world")
   check ll.head.data == "world"
   check ll.tail.data == "hello"
+
+test "items in correct order":
+  var ll = newDoublyLinkedList[string]()
+  prepend(ll, "hello")
+  prepend(ll, "world")
+  prepend(ll, "goodbye")
+  check @["goodbye", "world", "hello"] == toSeq(items(ll))
