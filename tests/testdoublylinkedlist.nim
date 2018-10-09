@@ -15,3 +15,7 @@ test "can prepend items":
   var ll = newDoublyLinkedList[string]()
   prepend(ll, "hello")
   check ll.head.data == "hello"
+  check ll.tail.data == "hello"
+  prepend(ll, "world")
+  check ll.head.data == "world"
+  check ll.tail.data == "hello"
