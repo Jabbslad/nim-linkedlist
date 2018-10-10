@@ -28,6 +28,7 @@ test "can append items":
   append(ll, "world")
   check ll.head.data == "hello"
   check ll.tail.data == "world"
+  check ll.head.next == ll.tail
 
 test "items in correct order":
   var ll = newDoublyLinkedList[string]()

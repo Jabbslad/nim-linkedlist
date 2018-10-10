@@ -28,7 +28,7 @@ proc append*[T](L: var DoublyLinkedList[T], n: DoublyLinkedListNode[T]) =
   if L.tail == nil:
     L.tail = n
   else:
-    n.next = L.tail
+    L.tail.next = n
     L.tail = n
 
   if L.head == nil:
