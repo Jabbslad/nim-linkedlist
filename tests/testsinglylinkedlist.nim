@@ -30,6 +30,8 @@ test "can append items":
   check ll.head.data == "hello"
   check ll.tail.data == "world"
 
+  check ll.head.next == ll.tail
+
 test "items in correct order":
   var ll = newSinglyLinkedList[string]()
   prepend(ll, "hello")

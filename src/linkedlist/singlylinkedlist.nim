@@ -32,7 +32,7 @@ proc append*[T](L: var SinglyLinkedList[T], node: SinglyLinkedlistNode[T]) =
     L.tail = node
     L.head = node
   else:
-    node.next = L.tail
+    L.tail.next = node
     L.tail = node
 
 proc append*[T](L: var SinglyLinkedList[T], data: T) = 
