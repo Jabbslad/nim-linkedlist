@@ -20,6 +20,9 @@ test "can prepend items":
   check ll.head.data == "world"
   check ll.tail.data == "hello"
   check ll.head.next == ll.tail
+  check ll.tail.prev == ll.head
+  check ll.head.prev == nil
+  check ll.tail.next == nil
 
 test "can append items":
   var ll = newDoublyLinkedList[string]()
@@ -31,6 +34,8 @@ test "can append items":
   check ll.tail.data == "world"
   check ll.head.next == ll.tail
   check ll.tail.prev == ll.head
+  check ll.head.prev == nil
+  check ll.tail.next == nil
 
 test "items in correct order":
   var ll = newDoublyLinkedList[string]()

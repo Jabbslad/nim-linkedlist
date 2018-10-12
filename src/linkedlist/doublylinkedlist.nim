@@ -16,6 +16,8 @@ proc newDoublyLinkedNode*[T](value: T): DoublyLinkedListNode[T] =
   result.data = value
 
 proc prepend*[T](L: var DoublyLinkedList[T], n: DoublyLinkedListNode[T]) = 
+  if L.head != nil:
+    L.head.prev = n
   n.next = L.head
   L.head = n
   if L.tail == nil:
