@@ -20,6 +20,7 @@ test "can prepend items":
   prepend(ll, "world")
   check ll.head.data == "world"
   check ll.tail.data == "hello"
+  check ll.head.next == ll.tail
 
 test "can append items":
   var ll = newSinglyLinkedList[string]()
