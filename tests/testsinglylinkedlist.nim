@@ -21,6 +21,7 @@ test "can prepend items":
   check ll.head.data == "world"
   check ll.tail.data == "hello"
   check ll.head.next == ll.tail
+  check ll.tail.next == nil
 
 test "can append items":
   var ll = newSinglyLinkedList[string]()
@@ -31,6 +32,7 @@ test "can append items":
   check ll.head.data == "hello"
   check ll.tail.data == "world"
   check ll.head.next == ll.tail
+  check ll.tail.next == nil
 
 test "items in correct order":
   var ll = newSinglyLinkedList[string]()
