@@ -30,6 +30,7 @@ test "can append items":
   check ll.head.data == "hello"
   check ll.tail.data == "world"
   check ll.head.next == ll.tail
+  check ll.tail.prev == ll.head
 
 test "items in correct order":
   var ll = newDoublyLinkedList[string]()
