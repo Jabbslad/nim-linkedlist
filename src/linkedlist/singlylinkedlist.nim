@@ -50,3 +50,10 @@ iterator pairs*[T](L: SinglyLinkedList[T]): tuple[a: int, b: T] =
   for item in L:
     yield (i, item)
     inc(i)
+
+proc `$`*[T](L: SinglyLinkedList[T]): string =
+  result = "["
+  for item in L:
+    if result.len > 1: result.add(", ")
+    result.addQuoted(item)
+  result.add("]")
