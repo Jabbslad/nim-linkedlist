@@ -48,8 +48,12 @@ test "pairs in correct order":
   prepend(ll, "goodbye")
   check @[(a: 0, b: "goodbye"), (a: 1, b: "world"), (a: 2, b: "hello")] == toSeq(pairs(ll))
 
-test "to string":
+test "to string for items":
   var ll = newSinglyLinkedList[string]()
   append(ll, "hello")
   append(ll, "world")
   check $ll == "[\"hello\", \"world\"]"
+
+test "to string for items":
+  var ll = newSinglyLinkedList[string]()
+  check $ll == "[]"
