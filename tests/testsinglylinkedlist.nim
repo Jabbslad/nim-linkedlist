@@ -54,6 +54,6 @@ test "to string for items":
   append(ll, "world")
   check $ll == "[\"hello\", \"world\"]"
 
-test "to string for items":
+test "to string for zero items":
   var ll = newSinglyLinkedList[string]()
   check $ll == "[]"
