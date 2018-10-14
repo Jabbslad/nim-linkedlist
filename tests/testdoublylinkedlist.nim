@@ -50,3 +50,13 @@ test "pairs in correct order":
   prepend(ll, "world")
   prepend(ll, "goodbye")
   check @[(a: 0, b: "goodbye"), (a: 1, b: "world"), (a: 2, b: "hello")] == toSeq(pairs(ll))
+
+test "to string for items":
+  var ll = newDoublyLinkedList[string]()
+  append(ll, "hello")
+  append(ll, "world")
+  check $ll == "[\"hello\", \"world\"]"
+
+test "to string for items":
+  var ll = newDoublyLinkedList[string]()
+  check $ll == "[]"
