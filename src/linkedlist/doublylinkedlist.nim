@@ -40,14 +40,21 @@ proc append*[T](L: var DoublyLinkedList[T], n: DoublyLinkedListNode[T]) =
 proc append*[T](L: var DoublyLinkedList[T], value: T) =
   append(L, newDoublyLinkedNode(value))
 
-iterator items*[T](L: var DoublyLinkedList[T]): T =
+iterator items*[T](L: DoublyLinkedList[T]): T =
   var n = L.head
   while n != nil:
     yield n.data
     n = n.next
 
-iterator pairs*[T](L: var DoublyLinkedList[T]): tuple[a: int, b: T] =
+iterator pairs*[T](L: DoublyLinkedList[T]): tuple[a: int, b: T] =
   var i: int
   for item in L:
     yield(i, item)
     inc(i)
+
+proc `$`*[T](L: DoublyLinkedList[T]): string = 
+    result = "["
+    for item in L:
+      if result.len > 1: result.add(", ")
+      result.addQuoted(item)
+    result.add("]")
