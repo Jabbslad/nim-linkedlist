@@ -57,3 +57,13 @@ test "to string for items":
 test "to string for zero items":
   var ll = newSinglyLinkedList[string]()
   check $ll == "[]"
+
+test "empty nodes":
+  var ll = newSinglyLinkedList[string]()
+  check @[] == toSeq(nodes(ll))
+
+test "non-empty nodes":
+  var ll = newSinglyLinkedList[string]()
+  append(ll, "hello")
+  append(ll, "world")
+  check @[ll.head, ll.tail] == toSeq(nodes(ll))
