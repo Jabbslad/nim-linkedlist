@@ -53,8 +53,15 @@ iterator pairs*[T](L: DoublyLinkedList[T]): tuple[a: int, b: T] =
     inc(i)
 
 proc `$`*[T](L: DoublyLinkedList[T]): string = 
-    result = "["
-    for item in L:
-      if result.len > 1: result.add(", ")
-      result.addQuoted(item)
-    result.add("]")
+  result = "["
+  for item in L:
+    if result.len > 1: result.add(", ")
+    result.addQuoted(item)
+  result.add("]")
+
+iterator nodes*[T](L: DoublyLinkedList[T]): DoublyLinkedListNode[T] =
+  if L.head != nil:
+    var it = L.head
+    while it != nil:
+      yield it
+      it = it.next
