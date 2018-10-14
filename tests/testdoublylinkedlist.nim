@@ -60,3 +60,13 @@ test "to string for items":
 test "to string for zero items":
   var ll = newDoublyLinkedList[string]()
   check $ll == "[]"
+
+test "empty nodes":
+  var ll = newDoublyLinkedList[string]()
+  check newSeq[DoublyLinkedListNode[string]](0) == toSeq(nodes(ll))
+
+test "non-empty nodes":
+  var ll = newDoublyLinkedList[string]()
+  append(ll, "hello")
+  append(ll, "world")
+  check @[ll.head, ll.tail] == toSeq(nodes(ll))
