@@ -3,7 +3,7 @@ type
     head*: SinglyLinkedlistNode[T]
     tail*: SinglyLinkedlistNode[T]
 
-  SinglyLinkedlistNode[T] = ref Node[T]
+  SinglyLinkedlistNode*[T] = ref Node[T]
 
   Node*[T] = object
     data*: T
@@ -57,3 +57,10 @@ proc `$`*[T](L: SinglyLinkedList[T]): string =
     if result.len > 1: result.add(", ")
     result.addQuoted(item)
   result.add("]")
+
+iterator nodes*[T](L: SinglyLinkedList[T]): SinglyLinkedlistNode[T] = 
+  if L.head != nil:
+    var it = L.head
+    while it != nil:
+      yield it
+      it = it.next

@@ -60,7 +60,7 @@ test "to string for zero items":
 
 test "empty nodes":
   var ll = newSinglyLinkedList[string]()
-  check @[] == toSeq(nodes(ll))
+  check newSeq[SinglyLinkedListNode[string]](0) == toSeq(nodes(ll))
 
 test "non-empty nodes":
   var ll = newSinglyLinkedList[string]()
