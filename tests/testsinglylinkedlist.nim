@@ -67,3 +67,13 @@ test "non-empty nodes":
   append(ll, "hello")
   append(ll, "world")
   check @[ll.head, ll.tail] == toSeq(nodes(ll))
+
+test "can remove item O(n)":
+  var ll = newSinglyLinkedList[string]()
+  append(ll, "hello")
+  var n = new(SinglyLinkedlistNode[string])
+  n.data = "world"
+  append(ll, n)
+  append(ll, "goodbye")
+  remove(ll, n)
+  check @["hello", "goodbye"] == toSeq(items(ll))
