@@ -64,3 +64,14 @@ iterator nodes*[T](L: SinglyLinkedList[T]): SinglyLinkedlistNode[T] =
     while it != nil:
       yield it
       it = it.next
+
+proc remove*[T](L: var SinglyLinkedList[T], n: SinglyLinkedlistNode) =
+  if L.head == n:
+    L.head = L.head.next
+
+  var it = L.head
+  while it != nil:
+    if it.next == n:
+      it.next = it.next.next
+      break
+    it = it.next
