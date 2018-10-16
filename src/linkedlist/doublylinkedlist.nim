@@ -65,3 +65,13 @@ iterator nodes*[T](L: DoublyLinkedList[T]): DoublyLinkedListNode[T] =
     while it != nil:
       yield it
       it = it.next
+
+proc remove*[T](L: var DoublyLinkedList[T], n: DoublyLinkedListNode[T]) =
+  if n.prev != nil:
+    n.prev.next = n.next
+  if n.next != nil:
+    n.next.prev = n.prev
+  if n == L.tail: L.tail = n.prev
+  if n == L.head: L.head = n.next
+  
+  
