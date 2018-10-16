@@ -70,3 +70,28 @@ test "non-empty nodes":
   append(ll, "hello")
   append(ll, "world")
   check @[ll.head, ll.tail] == toSeq(nodes(ll))
+
+test "can remove item O(n)":
+  var ll = newDoublyLinkedList[string]()
+  append(ll, "hello")
+  var n = new(DoublyLinkedListNode[string])
+  n.data = "world"
+  append(ll, n)
+  append(ll, "goodbye")
+  remove(ll, n)
+  check @["hello", "goodbye"] == toSeq(items(ll))
+
+test "can remove item from empty list":
+  var ll = newDoublyLinkedList[string]()
+  var n = new(DoublyLinkedListNode[string])
+  n.data = "hello"
+  remove(ll, n)
+  check newSeq[DoublyLinkedListNode[string]](0) == toSeq(nodes(ll))
+
+test "can remove item from list with 1 item":
+  var ll = newDoublyLinkedList[string]()
+  var n = new(DoublyLinkedListNode[string])
+  n.data = "hello"
+  append(ll, n)
+  remove(ll, n)
+  check newSeq[DoublyLinkedListNode[string]](0) == toSeq(nodes(ll))
