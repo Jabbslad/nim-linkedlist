@@ -71,7 +71,7 @@ test "non-empty nodes":
   append(ll, "world")
   check @[ll.head, ll.tail] == toSeq(nodes(ll))
 
-test "can remove item O(n)":
+test "can remove item O(1)":
   var ll = newDoublyLinkedList[string]()
   append(ll, "hello")
   var n = new(DoublyLinkedListNode[string])
@@ -79,7 +79,8 @@ test "can remove item O(n)":
   append(ll, n)
   append(ll, "goodbye")
   remove(ll, n)
-  check @["hello", "goodbye"] == toSeq(items(ll))
+  append(ll, "universe")
+  check @["hello", "goodbye", "universe"] == toSeq(items(ll))
 
 test "can remove item from empty list":
   var ll = newDoublyLinkedList[string]()
